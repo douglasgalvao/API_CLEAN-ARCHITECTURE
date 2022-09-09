@@ -1,7 +1,6 @@
 import { SignUpController } from './signup'
-import { MissingParamError, InvalidParamError } from '../../erros'
+import { MissingParamError, InvalidParamError, ServerError } from '../../erros'
 import { EmailValidator, AddAccount, AddAccountModel, AccountModel } from './signup-protocols'
-import { ServerError } from '../../erros/server-error'
 
 interface SutTypes {
   sut: SignUpController
@@ -146,7 +145,6 @@ describe('SignUp Controller', () => {
       }
     }
     sut.handle(httpRequest)
-    console.log(emailValidatorStub)
     expect(isValidSpy).toHaveBeenCalledWith('any_email@mail.com')
   })
 
